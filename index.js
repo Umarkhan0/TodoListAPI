@@ -1,7 +1,7 @@
 import express from "express";
 const app = express();
 import router from "./routes/index.js";
-const port = 4000;
+const PORT = process.env.PORT || 8000
 app.use(express.json());
 app.use("/", (req, res, next) => {
     if (req?.query?.key === "123") {
@@ -11,6 +11,6 @@ app.use("/api", router);
         res.status(404).send({ messge: "Rong key" })
     }
 })
-app.listen(port, () => {
-    console.log("Server is runing port", port);
+app.listen(PORT, () => {
+    console.log("Server is runing port", PORT);
 });
